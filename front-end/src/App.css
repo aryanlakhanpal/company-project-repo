@@ -94,7 +94,7 @@
 .history-panel h3 {
     margin-top: 0;
     padding-bottom: 10px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 3px solid #ccc;
 }
 .history-panel ul {
     list-style: none;
