@@ -47,7 +47,8 @@ async function loadData() {
                 console.log('❌ MongoDB connection closed.');
             });
     } catch (error) {
-        console.error('🔥 Error during data loading:', error);
+        console.error('🔥 Error during data loading: ', 
+            error);
         await mongoose.disconnect();
         process.exit(1);
     }
