@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  database:
+    image: mongo:latest
+    container_name: mongo_db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build: ./backend
+    container_name: backend_service
+    ports:
+      - "3001:3001"
+    environment:
+      # Use the service name 'database' to connect to Mongo
+      MONGO_URI: mongodb://database:27017/ecommerce_db
+      PORT: 3001
+    depends_on:
+      - database
+
+  frontend:
+    build: ./frontend
+    container_name: frontend_service
+    ports:
+      # Map container's port 80 to host's port 3000
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  mongo-data:
